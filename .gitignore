@@ -5,6 +5,9 @@
 .*.sw[a-z]
 *.un~
 pkg/
+*.rpm*
+*.gz*
+*.bz*
 
 # Berkshelf
 .vagrant

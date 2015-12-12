@@ -87,9 +87,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       mysqlc1n1.vm.provision :chef_solo do |chef|
         chef.run_list = [
-        'recipe[cbmysqlc1::default]','recipe[cbmysqlc1::update_etc_hosts]','recipe[cbmysqlc1::install_cluster_software]','recipe[cbmysqlc1::create_mysql_config_files]', 'recipe[cbmysqlc1::start_cluster_processes]'
-        #'recipe[cbmysqlc1::default]','recipe[cbmysqlc1::update_etc_hosts]','recipe[cbmysqlc1::create_mysql_config_files]','recipe[cbmysqlc1::start_cluster_processes]'
-        #'recipe[cbmysqlc1::default]','recipe[cbmysqlc1::update_etc_hosts]','recipe[cbmysqlc1::install_cluster_software]','recipe[cbmysqlc1::create_mysql_config_files]'
+        'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::install_cluster_software]','recipe[cblamp1::create_mysql_config_files]', 'recipe[cblamp1::start_cluster_processes]'
+        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::create_mysql_config_files]','recipe[cblamp1::start_cluster_processes]'
+        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::install_cluster_software]','recipe[cblamp1::create_mysql_config_files]'
 
         ]
       end
@@ -128,9 +128,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       mysqlc1n2.vm.provision :chef_solo do |chef|
         chef.run_list = [
-        'recipe[cbmysqlc1::default]','recipe[cbmysqlc1::update_etc_hosts]','recipe[cbmysqlc1::install_cluster_software]','recipe[cbmysqlc1::create_mysql_config_files]', 'recipe[cbmysqlc1::start_cluster_processes]'
-        #'recipe[cbmysqlc1::default]','recipe[cbmysqlc1::update_etc_hosts]','recipe[cbmysqlc1::create_mysql_config_files]','recipe[cbmysqlc1::start_cluster_processes]'
-        #'recipe[cbmysqlc1::default]','recipe[cbmysqlc1::update_etc_hosts]','recipe[cbmysqlc1::install_cluster_software]','recipe[cbmysqlc1::create_mysql_config_files]'
+        'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::install_cluster_software]','recipe[cblamp1::create_mysql_config_files]', 'recipe[cblamp1::start_cluster_processes]'
+        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::create_mysql_config_files]','recipe[cblamp1::start_cluster_processes]'
+        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::install_cluster_software]','recipe[cblamp1::create_mysql_config_files]'
 
       ]
       end     
@@ -170,6 +170,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       webapp1.vm.provision :chef_solo do |chef|
         chef.run_list = [
         'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]', 'recipe[cblamp1::install_php]'
+        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]'
+        #'recipe[cblamp1::install_php]'
        ]
       end     
 
