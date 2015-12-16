@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Box
   config.vm.box = 'oracle-oel65-64'
   config.vm.box_url = 'https://storage.us2.oraclecloud.com/v1/istoilis-istoilis/vagrant/oel65-64.box'
-  config.ssh.password = 'vagrant'
+  #config.ssh.password = 'vagrant'
   
   # Box override  if using vmware_fusion
   config.vm.provider "vmware_fusion" do |v, override|
@@ -53,39 +53,39 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  Specify for either provider - will pickup whatever is relevant in the environment
 
 
-   # Begin mysqlc1n1
+   # Begin mysqln1
 
-     # Begin mysqlc1n1
-    config.vm.define "mysqlc1n1" do |mysqlc1n1|
+     # Begin mysqln1
+    config.vm.define "mysqln1" do |mysqln1|
 
       # hostname
-      mysqlc1n1.vm.hostname = "mysqlc1n1"
+      mysqln1.vm.hostname = "mysqln1"
 
       # customization syntax for vmware 
-      mysqlc1n1.vm.provider "vmware_fusion" do |v|
+      mysqln1.vm.provider "vmware_fusion" do |v|
           v.vmx["numvcpus"] = "1"
           v.vmx["memsize"] = "512"
       end
    
       # customization syntax for virtualbox
-      mysqlc1n1.vm.provider "virtualbox" do |v|
+      mysqln1.vm.provider "virtualbox" do |v|
           v.customize [ "modifyvm", :id, "--cpus", "1" ]
           v.customize [ "modifyvm", :id, "--memory", "512" ]
       end
 
       # Network
-      #mysqlc1n1.vm.network "private_network", ip: "192.168.205.10"
-      mysqlc1n1.vm.network "private_network", ip: "192.168.65.21", virtualbox__intnet: true
+      #mysqln1.vm.network "private_network", ip: "192.168.205.10"
+      mysqln1.vm.network "private_network", ip: "192.168.65.31", virtualbox__intnet: true
 
       # Provisioning steps
 
       # Shell provisioner
-      #mysqlc1n1.vm.provision :shell, inline: 'echo mysqlc1n1 shell provision echo'
+      #mysqln1.vm.provision :shell, inline: 'echo mysqln1 shell provision echo'
 
       # Chef provisioner --> already version 11 is on Oracle's vagrant box
-      #mysqlc1n1.omnibus.chef_version = '12.0.4'
+      #mysqln1.omnibus.chef_version = '12.0.4'
 
-      mysqlc1n1.vm.provision :chef_solo do |chef|
+      mysqln1.vm.provision :chef_solo do |chef|
         chef.run_list = [
         'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::install_cluster_software]','recipe[cblamp1::create_mysql_config_files]', 'recipe[cblamp1::start_cluster_processes]'
         #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::create_mysql_config_files]','recipe[cblamp1::start_cluster_processes]'
@@ -96,18 +96,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
     end
 
-   # End mysqlc1n1
+   # End mysqln1
 
-   # Begin mysqlc1n2
-    config.vm.define "mysqlc1n2" do |mysqlc1n2|
-      mysqlc1n2.vm.hostname = "mysqlc1n2"
+   # Begin mysqln2
+    config.vm.define "mysqln2" do |mysqln2|
+      mysqln2.vm.hostname = "mysqln2"
    
-      mysqlc1n2.vm.provider "vmware_fusion" do |v|
+      mysqln2.vm.provider "vmware_fusion" do |v|
           v.vmx["numvcpus"] = "1"
           v.vmx["memsize"] = "512"
       end
    
-      mysqlc1n2.vm.provider "virtualbox" do |v|
+      mysqln2.vm.provider "virtualbox" do |v|
           #v.customize [ "modifyvm", :id, "--cpus", "1" ]
           #v.customize [ "modifyvm", :id, "--memory", "512" ]
 
@@ -116,17 +116,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end
 
       # Network
-      mysqlc1n2.vm.network "private_network", ip: "192.168.65.22", virtualbox__intnet: true
+      mysqln2.vm.network "private_network", ip: "192.168.65.32", virtualbox__intnet: true
 
       # Provisioning steps
 
       # Shell provisioner
-      #mysqlc1n2.vm.provision :shell, inline: 'echo mysqlc1n2 shell provision echo'
+      #mysqln2.vm.provision :shell, inline: 'echo mysqln2 shell provision echo'
 
       # Chef provisioner --> already version 11 is on Oracle's vagrant box
-      #mysqlc1n2.omnibus.chef_version = '12.0.4' 
+      #mysqln2.omnibus.chef_version = '12.0.4' 
 
-      mysqlc1n2.vm.provision :chef_solo do |chef|
+      mysqln2.vm.provision :chef_solo do |chef|
         chef.run_list = [
         'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::install_cluster_software]','recipe[cblamp1::create_mysql_config_files]', 'recipe[cblamp1::start_cluster_processes]'
         #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]','recipe[cblamp1::create_mysql_config_files]','recipe[cblamp1::start_cluster_processes]'
@@ -136,7 +136,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       end     
 
     end
-    # End mysqlc1n2
+    # End mysqln2
 
 
     # Begin webapp1
