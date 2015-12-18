@@ -8,6 +8,8 @@ pkg/
 *.rpm*
 *.gz*
 *.bz*
+*.zip
+*.gzip
 
 # Berkshelf
 .vagrant

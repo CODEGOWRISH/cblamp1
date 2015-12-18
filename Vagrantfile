@@ -169,9 +169,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       webapp1.vm.provision :chef_solo do |chef|
         chef.run_list = [
-        'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]', 'recipe[cblamp1::install_php]'
+        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]', 'recipe[cblamp1::install_php]', 'recipe[cblamp1::config_httpd]'
         #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]'
         #'recipe[cblamp1::install_php]'
+        #'recipe[cblamp1::config_httpd]'
+        'recipe[cblamp1::install_httpd]'
        ]
       end     
 

@@ -5,24 +5,52 @@
 #                                                                                         
 #                                                                                         
  
-# Common
+#-----------------------
+# Unix and Machine/VM
+#-----------------------
+
+default['hostsFile']     = '/etc/hosts'
+default['softwareFolder'] = '/vagrant'
+
+# MySQL
 default['clusterDir']    = '/var/lib/mysql-cluster'
 default['dataDir']       = '/var/lib/mysql-cluster/data'
-default['hostsFile']     = '/etc/hosts'
+
 default['myCnfFile']     = '/etc/my.cnf'
 default['configIniFile'] = '/var/lib/mysql-cluster/config.ini'
 default['usrClusterDir'] = '/usr/mysql-cluster'
 
-default['softwareFolder'] = '/vagrant'
 default['serverRPM']      = 'MySQL-Cluster-server-advanced-7.4.8-1.el6.x86_64.rpm'
 default['clientRPM']      = 'MySQL-Cluster-client-advanced-7.4.8-1.el6.x86_64.rpm'
 
 default['serverInstallLog'] = '/tmp/mysql_server_install.log'
 default['clientInstallLog'] = '/tmp/mysql_client_install.log'
+
+#---------------
+# Apache HTTPD
+#---------------
+# http port for Apache - use 50000 series
+default['httpd_http_port']  = '50000'
+
+# https port for Apache - use 50500 series
+default['httpd https_port'] = '50500'
+
 default['httpdInstallLog']  = '/tmp/httpd_install.log'
+default['httpdConfigLog']  = '/tmp/httpd_config.log'
+
+default['httpdConfigFile']  = '/etc/httpd/conf/httpd.conf'
+
+#------
+# PHP
+#------
 default['phpInstallLog']    = '/tmp/php_install.log'
+default['phpConfigLog']    = '/tmp/php_Config.log'
 
 #{softwareFolder}/#{softwareBundle}
+
+#---------------------------------------
+# Host Names and IP Addresses of Nodes
+#---------------------------------------
 
 # Node1                                                                                         
 default['node1']['hostName']  = 'mysqln1'

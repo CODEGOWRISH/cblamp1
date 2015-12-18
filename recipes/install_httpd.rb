@@ -5,12 +5,24 @@
 #
 #---------------------------------------------------------------------------------------------------------------
 
+Chef::Resource.send(:include, Httpd::Helper)
+
+# To include the helper only in the context of 'bash' resource:
+#Chef::Resource.Bash.send(:include, Httpd::Helper)
+
 # Install httpd software - by calling yum specifically
+
 bash 'install httpd' do
+
  user "root"
-  code <<-EOH
-    yum -y install httpd > #{node[:httpdInstallLog]} 2>> #{node[:httpdInstallLog]}
-  EOH
+
+ code <<-EOH
+  yum -y install httpd > #{node[:httpdInstallLog]} 2>> #{node[:httpdInstallLog]}
+ EOH
+
+  not_if { httpd_installed? }
+  #not_if 'rpm -qa |grep httpd | grep -v httpd-tools | grep -v grep'
+
 end
 
 # If installing from source:  http://www.us.apache.org/dist//httpd/httpd-2.4.18.tar.bz2
