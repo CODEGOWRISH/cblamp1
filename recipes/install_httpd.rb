@@ -32,6 +32,8 @@ service 'httpd' do
   action [:restart]
 end
 
+#self.touch_a_file ('/tmp/touch_a_file')
+
 # If installing from source:  http://www.us.apache.org/dist//httpd/httpd-2.4.18.tar.bz2
 # Refer to notes
 
