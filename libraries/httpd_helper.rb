@@ -15,9 +15,11 @@ module Httpd
 
     include Chef::Mixin::ShellOut
 
+    # Check if HTTPD is already installed
     def httpd_installed?
       cmd = shell_out!('rpm -qa |grep httpd | grep -v httpd-tools | grep -v grep', {:returns => [0,1]})
       cmd.stderr.empty? && (cmd.stdout.include? "httpd")
     end
+
   end
 end

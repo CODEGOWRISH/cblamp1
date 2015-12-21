@@ -21,8 +21,15 @@ bash 'install httpd' do
  EOH
 
   not_if { httpd_installed? }
-  #not_if 'rpm -qa |grep httpd | grep -v httpd-tools | grep -v grep'
 
+end
+
+service 'httpd' do
+  action [:enable, :start]
+end
+
+service 'httpd' do
+  action [:restart]
 end
 
 # If installing from source:  http://www.us.apache.org/dist//httpd/httpd-2.4.18.tar.bz2
@@ -43,10 +50,9 @@ end
 #end
 
 # Start httpd service
-bash 'start httpd' do
-  user "root"
-  code <<-EOH
-    sudo service httpd start >> #{node[:httpdInstallLog]} 2>> #{node[:httpdInstallLog]}
-  EOH
-end
-
+#bash 'start httpd' do
+# user "root"
+#  code <<-EOH
+#    sudo service httpd start >> #{node[:httpdInstallLog]} 2>> #{node[:httpdInstallLog]}
+#  EOH
+#end
