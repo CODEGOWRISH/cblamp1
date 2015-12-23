@@ -14,7 +14,7 @@ bash 'config httpd' do
     echo INFO - Backing up httpd config file `date` >> #{node[:httpdConfigLog]} 2>> #{node[:httpdConfigLog]} 
     cp #{node[:httpdConfigFile]} #{node[:httpdConfigFile]}-$timestamp
 
-    cat #{node[:httpdConfigFile]} | sed 's/Listen 80/Listen 50000/g' > #{node[:httpdConfigFile]}.tmp
+    cat #{node[:httpdConfigFile]} | sed 's/Listen 80/Listen 50001/g' > #{node[:httpdConfigFile]}.tmp
     cp #{node[:httpdConfigFile]}.tmp #{node[:httpdConfigFile]}
 
   EOH

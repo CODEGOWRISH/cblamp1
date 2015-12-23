@@ -153,11 +153,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           #v.customize [ "modifyvm", :id, "--memory", "512" ]
 
           v.cpus = "1"
-          v.memory = "768"
+          v.memory = "512"
       end
 
       # Network
       webapp1.vm.network "private_network", ip: "192.168.65.51", virtualbox__intnet: true
+      #webapp1.vm.network "private_network", ip: "192.168.65.52", virtualbox__intnet: true
+      webapp1.vm.network "forwarded_port", guest: 50001, host: 50001
+      #webapp1.vm.network "forwarded_port", guest: 50001, guest_ip: "192.168.65.51", host: 50001
+      #webapp1.vm.network "forwarded_port", guest: 50002, guest_ip: "192.168.65.52", host: 50002
 
       # Provisioning steps
 
@@ -169,13 +173,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
       webapp1.vm.provision :chef_solo do |chef|
         chef.run_list = [
-        #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]', 'recipe[cblamp1::install_php]', 'recipe[cblamp1::config_httpd]'
+        'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]', 'recipe[cblamp1::install_php]', 'recipe[cblamp1::config_httpd]'
         #'recipe[cblamp1::default]','recipe[cblamp1::update_etc_hosts]', 'recipe[cblamp1::install_httpd]'
         #'recipe[cblamp1::install_php]'
         #'recipe[cblamp1::config_httpd]'
         #'recipe[cblamp1::install_httpd]'
         #'recipe[cblamp1::library_test]'
-        'recipe[cblamp1::config_httpd]'
+        #'recipe[cblamp1::config_httpd]'
        ]
       end     
 
