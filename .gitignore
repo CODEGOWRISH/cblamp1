@@ -10,6 +10,7 @@ pkg/
 *.bz*
 *.zip
 *.gzip
+*.tar*
 
 # Berkshelf
 .vagrant
