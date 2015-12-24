@@ -39,6 +39,17 @@ default['httpdInstallLog']  = '/tmp/httpd_install.log'
 default['httpdConfigLog']  = '/tmp/httpd_config.log'
 
 default['httpdConfigFile']  = '/etc/httpd/conf/httpd.conf'
+default['httpdConfigFileTemplate']  = 'httpd_conf.erb'
+
+default['site1']['folder']  = '/var/www/sites/gowrishms.com'
+default['site1']['htmlFolder']  = '/var/www/sites/gowrishms.com/html'
+default['site1']['indexFile']  = '/var/www/sites/gowrishms.com/html/index.html'
+default['site1']['indexFileTemplate']  = 'index1_html.erb'
+
+default['site2']['folder']  = '/var/www/sites/gowrishdba.com'
+default['site2']['htmlFolder']  = '/var/www/sites/gowrishdba.com/html'
+default['site2']['indexFile']  = '/var/www/sites/gowrishdba.com/html/index.html'
+default['site2']['indexFileTemplate']  = 'index2_html.erb'
 
 #------
 # PHP
