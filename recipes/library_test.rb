@@ -1,6 +1,4 @@
 #                                                                                         
-# Author: Gowrish.Mallipattana                                                            
-#                                                                                         
 # Testing library code                                    
 #
 
