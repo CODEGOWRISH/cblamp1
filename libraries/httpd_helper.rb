@@ -1,6 +1,4 @@
 #                                                                                         
-# Author: Gowrish.Mallipattana                                                            
-#                                                                                         
 # Helper for httpd install/config                                     
 #
 # Help to write this:                                                                               
