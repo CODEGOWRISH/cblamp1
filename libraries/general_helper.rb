@@ -1,5 +1,4 @@
-#                                                                                         
-# Author: Gowrish.Mallipattana                                                            
+                                                           
 #                                                                                         
 # Helper for general purpose work                                 
 #
